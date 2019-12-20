@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Noto Sans KR',
+    'Malgun Gothic', '맑은고딕', 'Dotum', '돋움', 'Gulim', '굴림';
+  font-size: 12px;
+}
+
+.wrap {
+  width: 100%;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+}
+
+figure {
+  margin: 0;
+}
