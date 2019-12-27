@@ -8,18 +8,20 @@
 
     <PopPersonal :imageUrl="imageUrl"></PopPersonal>
     <PopPost :imageUrl="imageUrl"></PopPost>
+    <PopDone></PopDone>
   </div>
 </template>
 
 <script>
-import PopPersonal from '@/components/lostAnimalPark/PopPersonal';
 import PopPost from '@/components/shared/PopPost';
+import PopPersonal from '@/components/lostAnimalPark/PopPersonal';
+import PopDone from '@/components/lostAnimalPark/PopDone';
 
 import { mapActions } from 'vuex';
 
 export default {
   name: 'LostAnimalPark',
-  components: { PopPersonal, PopPost },
+  components: { PopPersonal, PopPost, PopDone },
   data() {
     return {
       imageUrl:
@@ -41,6 +43,6 @@ export default {
 .wrap {
   width: 100%;
   height: 3000px;
-  background: rgba(17, 206, 196, 197);
+  background: #3f51b5;
 }
 </style>

@@ -19,16 +19,10 @@ export default {
       meta: [
         {
           name: 'viewport',
-          content: 'width=device-width, initial-scale=1'
+          content: 'width=720, user-scalable=no, target-densitydpi=device-dpi'
         }
       ]
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.wrap {
-  position: relative;
-}
-</style>

@@ -5,7 +5,7 @@
     :className="popName"
     :type="popName"
     :top="100"
-    @hide="closePop()"
+    :address="true"
     :imageUrl="imageUrl"
   >
     <template #header>
@@ -18,7 +18,6 @@
       <PersonalForm
         :id="'event1'"
         :phoneCorpAuth="false"
-        :address="false"
         :imageUrl="imageUrl"
         :agreements="{
           type: 'img',
@@ -30,7 +29,7 @@
           <img :src="`${imageUrl}/popup/txt-nameNotice.png`" />
         </template>
       </PersonalForm>
-      <button>다음</button>
+      <button type="button" @click="nextStep()">다음</button>
     </template>
   </PopBase>
 </template>
@@ -45,9 +44,6 @@ export default {
   name: 'PopPersonal',
   data() {
     return {
-      userModel: {
-        parentName: ''
-      },
       popName: 'personal'
     };
   },
@@ -65,7 +61,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions('popup', ['closePop'])
+    ...mapActions('popup', ['openPop', 'closePop']),
+    ...mapActions('userModel', ['setUserModel', 'closePop']),
+    nextStep() {
+      // if(){
+      //   this.openPop('done')
+      // }
+    }
   }
 };
 </script>
@@ -111,6 +113,15 @@ $lap-image-url: 'https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/im
         line-height: 80px;
         vertical-align: middle;
       }
+      .zipcode__input {
+        width: calc(100% - 180px - 2px - 200px);
+      }
+      .popBtn__zipcode {
+        width: 200px;
+      }
+      .address__input {
+        margin-left: 180px;
+      }
     }
     &__item {
       display: flex;
@@ -146,7 +157,6 @@ $lap-image-url: 'https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/im
 </style>
 
 <style lang="scss" scoped>
-@import '~@/assets/scss/pages/mimaskstick/_variables.scss';
 .popup__personal {
   .popup__inner {
     width: 600px;
@@ -172,7 +182,7 @@ $lap-image-url: 'https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/im
   .popbtn__phone-auth,
   .popbtn__zipcode {
     color: #fff;
-    background: $colorBrown;
+    // background: $colorBrown;
   }
 }
 </style>

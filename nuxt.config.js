@@ -49,9 +49,8 @@ export default {
   styleResources: {
     // function, variables, mixin 만
     scss: [
-      '@/assets/scss/mixin/background.scss',
-      '@/assets/scss/pages/lostAnimalPark/_variables.scss',
-      '@.assets/scss/pages/mimaskstick/_variables.scss'
+      '@/assets/scss/base/variables.scss',
+      '@/assets/scss/mixin/background.scss'
     ]
   },
   /*

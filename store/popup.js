@@ -1,10 +1,12 @@
 export const state = () => ({
-  currentPop: ''
+  currentPop: '',
+  beforePop: ''
   // isLoading: false
 });
 
 export const mutations = {
   OPEN_POP(state, popName) {
+    console.log(popName);
     state.currentPop = popName;
   },
   CLOSE_POP(state) {
@@ -15,14 +17,12 @@ export const mutations = {
 export const actions = {
   openPop({ commit }, popName) {
     console.log(popName);
-    // state.dimm = true;
+    commit('OPEN_POP', popName);
+
+    const scrollTop = $(window).scrollTop();
     setTimeout(() => {
-      commit('OPEN_POP', popName);
-      const scrollTop = $(window).scrollTop();
-      setTimeout(() => {
-        $('.popup').css('top', scrollTop);
-      }, 50);
-    }, 200);
+      $('.popup').css('top', scrollTop);
+    }, 50);
   },
   closePop({ commit }) {
     commit('CLOSE_POP');

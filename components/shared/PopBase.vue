@@ -44,7 +44,7 @@
                 </slot>
               </div>
             </div>
-            <span class="popup__close" v-if="closeButton" @click="$emit('hide')"
+            <span class="popup__close" v-if="closeButton" @click="closePop()"
               >닫기</span
             >
           </div>
@@ -56,6 +56,8 @@
 
 <script>
 import DaumPostcode from 'vuejs-daum-postcode';
+
+import { mapActions } from 'vuex';
 
 export default {
   name: 'popup',
@@ -151,15 +153,18 @@ export default {
     }
   },
   methods: {
+    ...mapActions('popup', ['closePop']),
     onEsc() {
       if (this.show && this.closeOnEsc) {
-        this.$emit('hide');
+        // this.$emit('hide');
+        this.closePop();
       }
     },
     onClickMask() {
       // this.$emit('clickMask')
       if (this.closeOnClickMask) {
-        this.$emit('hide');
+        // this.$emit('hide');
+        this.closePop();
       }
     },
     postComplete(data) {

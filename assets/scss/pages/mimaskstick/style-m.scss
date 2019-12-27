@@ -1,0 +1,43 @@
+.visual {
+  height: 907px;
+  @include background(
+    map-get($mimaskstick, 'mo-image-url') + '/bg-visual.jpg',
+    $position: top center,
+    $color: #f4e8cb
+  );
+
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 298px;
+
+    &__box {
+      flex: none;
+      width: 940px;
+      height: 529px;
+    }
+    &__list {
+      width: 260px;
+      font-size: 0;
+    }
+    &__thumb {
+      width: inherit;
+      height: 176px;
+      @include background(
+        map-get($mimaskstick, 'mo-image-url') + '/img-thumb.jpg',
+        $position: top left
+      );
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          background-position-y: -(($i - 1) * 176) + px;
+        }
+      }
+      font-size: 0;
+      cursor: pointer;
+      &.on {
+        background-position-x: right;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+$device-kind: '' !default;
+$image-url: '' !default;
+
+$mimaskstick: (
+  pc-image-url: 'https://donginbi-event.s3.amazonaws.com/mimaskstick/images/pc',
+  mo-image-url:
+    'https://donginbi-event.s3.amazonaws.com/mimaskstick/images/mobile',
+  shared-image-url:
+    'https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared'
+) !default;

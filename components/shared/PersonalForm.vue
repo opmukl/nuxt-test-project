@@ -60,6 +60,7 @@
           name="zipcode"
           readonly
           id="infoZipcode"
+          class="zipcode__input"
           v-model="userModel.zipcode"
         />
         <button
@@ -73,6 +74,7 @@
           type="text"
           name="address"
           id="infoAddress"
+          class="address__input"
           readonly
           v-model="userModel.address"
         />
@@ -80,6 +82,7 @@
           type="text"
           name="addressDetail"
           id="infoAddressDetail"
+          class="address__input"
           placeholder="상세주소를 입력해주세요"
           v-model="userModel.addressDetail"
         />
@@ -143,7 +146,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'PersonalForm',
@@ -179,7 +182,7 @@ export default {
           type: 'img',
           list: [],
           checkboxSize: [20, 20]
-        }
+        };
       }
     },
     imageUrl: {
@@ -189,7 +192,7 @@ export default {
     order: {
       type: Array,
       default: () => {
-        return [1, 2, 3]
+        return [1, 2, 3];
       }
     }
   },
@@ -207,7 +210,7 @@ export default {
         agree3: false,
         agree4: false
       }
-    }
+    };
   },
   mounted() {
     // EventBus.$on("updateUserAddress", userAddress => {
@@ -242,9 +245,8 @@ export default {
     }
   },
   destroyed() {}
-}
+};
 </script>
-
 
 <style lang="scss" scoped>
 .fs0 {
@@ -253,7 +255,12 @@ export default {
 .info__group {
   display: flex;
   flex-direction: column;
-  dl {
+  .info__address {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .address__input {
+    width: 100%;
   }
 }
 .agree__group {
@@ -279,6 +286,7 @@ export default {
       background-position-y: bottom !important;
     }
   }
+
   .irCheckbox {
     display: inline-block;
     overflow: hidden;

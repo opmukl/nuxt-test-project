@@ -5,15 +5,9 @@
     :className="popName"
     :type="popName"
     :top="100"
+    :imageUrl="imageUrl"
   >
-    <template #header>
-      <h1 class="line">
-        <img
-          src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-post.png"
-          alt="우편번호"
-        />
-      </h1>
-    </template>
+    완료팝업
   </PopBase>
 </template>
 
@@ -23,11 +17,17 @@ import PopBase from '@/components/shared/PopBase';
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'PopPost',
+  name: 'PopDefault',
   data() {
     return {
-      popName: 'post'
+      popName: 'default'
     };
+  },
+  props: {
+    imageUrl: {
+      type: String,
+      default: ''
+    }
   },
   components: { PopBase },
   computed: {
@@ -37,13 +37,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('popup', ['openPop'])
+    ...mapActions('popup', ['openPop', 'closePop'])
   }
 };
 </script>
-
-<style lang="scss">
-.mimaskstick .popup.post .popup__content .popup__inner {
-  padding: 0;
-}
-</style>

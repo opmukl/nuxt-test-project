@@ -16,10 +16,6 @@
       </h1>
     </template>
     <template #content>
-      <img
-        src="https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image/popup/con-personal.png"
-        alt=""
-      />
       <PersonalForm
         :id="'event1'"
         :phoneCorpAuth="false"
@@ -43,10 +39,10 @@
 </template>
 
 <script>
-import PopBase from '@/components/shared/PopBase';
-import PersonalForm from '@/components/shared/PersonalForm';
+import PopBase from '@/components/shared/PopBase'
+import PersonalForm from '@/components/shared/PersonalForm'
 
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'PopPersonal',
@@ -58,38 +54,57 @@ export default {
       popName: 'personal',
       imageUrl:
         'https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image'
-    };
+    }
   },
   components: { PopBase, PersonalForm },
   computed: {
     ...mapState({ currentPop: state => state.popup.currentPop }),
     isShow() {
-      return this.currentPop == this.popName;
+      return this.currentPop == this.popName
     }
   },
   methods: {
     ...mapActions('popup', ['closePop'])
   }
-};
+}
 </script>
 
 <style lang="scss">
 .popup__personal {
-  .popup__header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 170px;
-    background: url(https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image/popup/bg-header.jpg)
-      center top no-repeat;
-    text-align: center;
+  .popup {
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 170px;
+      @include background(
+        map-get($mimaskstick, 'shared-image-url') + '/tl-personal.png'
+      );
+      text-align: center;
+    }
+    &__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 39px;
+      height: 39px;
+      font-size: 0;
+      @include background(
+        map-get($mimaskstick, 'shared-image-url') + '/btn-close.png'
+      );
+    }
   }
 
   .popup__inner {
     width: 560px;
+    width: 600px;
+    margin: 0 auto;
     margin: 0 auto;
   }
 
+  input {
+    height: 50px;
+  }
   .info {
     &__group {
       font-size: 0;
@@ -134,27 +149,6 @@ export default {
     }
   }
 
-  .agree__group {
-    .btn__agreeDetail {
-      width: 226px;
-      height: 84px;
-      background: url('https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image/popup/btns.png')
-        0 -151px no-repeat;
-    }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-@import '~@/assets/scss/pages/mimaskstick/_variables.scss';
-.popup__personal {
-  .popup__inner {
-    width: 600px;
-    margin: 0 auto;
-  }
-  input {
-    height: 50px;
-  }
   .phone-corp,
   .popbtn__phone-auth,
   .popbtn__zipcode {
@@ -172,7 +166,16 @@ export default {
   .popbtn__phone-auth,
   .popbtn__zipcode {
     color: #fff;
-    background: $colorBrown;
+    // background: $colorBrown;
+  }
+
+  .agree__group {
+    .btn__agreeDetail {
+      width: 226px;
+      height: 84px;
+      background: url('https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image/popup/btns.png')
+        0 -151px no-repeat;
+    }
   }
 }
 </style>

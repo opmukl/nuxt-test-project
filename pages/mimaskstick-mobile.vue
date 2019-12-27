@@ -41,6 +41,7 @@ export default {
   // },
   name: 'Mimaskstick',
   components: { PopTest, PopPersonal, PopPost },
+  layout: 'mobile',
   methods: {
     ...mapActions('popup', ['openPop'])
   },
@@ -55,5 +56,6 @@ export default {
 @import '~@/assets/scss/popup/zoom.scss';
 
 // 이벤트 style
-@import '~@/assets/scss/pages/mimaskstick/style.scss';
+@import '~@/assets/scss/pages/mimaskstick/style-m.scss';
 </style>
+

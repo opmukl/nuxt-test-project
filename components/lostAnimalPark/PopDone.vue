@@ -3,17 +3,10 @@
     v-show="isShow"
     :show="isShow"
     :className="popName"
-    :type="popName"
     :top="100"
+    :imageUrl="imageUrl"
   >
-    <template #header>
-      <h1 class="line">
-        <img
-          src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-post.png"
-          alt="우편번호"
-        />
-      </h1>
-    </template>
+    완료팝업
   </PopBase>
 </template>
 
@@ -23,11 +16,17 @@ import PopBase from '@/components/shared/PopBase';
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'PopPost',
+  name: 'PopDone',
   data() {
     return {
-      popName: 'post'
+      popName: 'done'
     };
+  },
+  props: {
+    imageUrl: {
+      type: String,
+      default: ''
+    }
   },
   components: { PopBase },
   computed: {
@@ -35,15 +34,17 @@ export default {
     isShow() {
       return this.currentPop == this.popName;
     }
-  },
-  methods: {
-    ...mapActions('popup', ['openPop'])
   }
 };
 </script>
 
 <style lang="scss">
-.mimaskstick .popup.post .popup__content .popup__inner {
-  padding: 0;
+.popup__done {
+  .popup {
+    &__dialog {
+      padding: 100px 0;
+      text-align: center;
+    }
+  }
 }
 </style>
