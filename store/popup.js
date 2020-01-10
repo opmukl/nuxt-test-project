@@ -4,19 +4,8 @@ export const state = () => ({
   // isLoading: false
 });
 
-export const mutations = {
-  OPEN_POP(state, popName) {
-    console.log(popName);
-    state.currentPop = popName;
-  },
-  CLOSE_POP(state) {
-    state.currentPop = '';
-  }
-};
-
 export const actions = {
   openPop({ commit }, popName) {
-    console.log(popName);
     commit('OPEN_POP', popName);
 
     const scrollTop = $(window).scrollTop();
@@ -28,4 +17,14 @@ export const actions = {
     commit('CLOSE_POP');
   },
   updateUserAddress() {}
+};
+
+export const mutations = {
+  OPEN_POP(state, popName) {
+    console.log(popName);
+    state.currentPop = popName;
+  },
+  CLOSE_POP(state) {
+    state.currentPop = '';
+  }
 };

@@ -1,0 +1,185 @@
+<template>
+  <PopBase
+    v-show="isShow"
+    :show="isShow"
+    :className="popName"
+    :type="popName"
+    :top="100"
+    :address="true"
+    :imageUrl="imageUrl"
+  >
+    <template #header>
+      <h1>
+        홍이장군
+      </h1>
+    </template>
+    <template #content>
+      <PersonalForm
+        :id="'event1'"
+        :phoneCorpAuth="false"
+        :imageUrl="imageUrl"
+        :agreements="{
+          type: 'img',
+          list: ['개인 정보 수집, 취급 및 위탁 동의 안내', '솰라솰라솰라'],
+          checkboxSize: [50, 50, 10]
+        }"
+        :nextPop="'test'"
+      >
+        <template #nameNotice>
+          <img :src="`${imageUrl}/popup/txt-nameNotice.png`" />
+        </template>
+        <template #next>
+          <img :src="`${imageUrl}/popup/txt-nameNotice.png`" />
+        </template>
+      </PersonalForm>
+    </template>
+  </PopBase>
+</template>
+
+<script>
+import PopBase from '@/components/shared/PopBase';
+import PersonalForm from '@/components/shared/PersonalForm';
+
+import { mapState, mapActions } from 'vuex';
+
+export default {
+  name: 'PopPersonal',
+  data() {
+    return {
+      popName: 'personal'
+    };
+  },
+  props: {
+    imageUrl: {
+      type: String,
+      default: ''
+    }
+  },
+  components: { PopBase, PersonalForm },
+  computed: {
+    ...mapState({ currentPop: state => state.popup.currentPop }),
+    isShow() {
+      return this.currentPop == this.popName;
+    }
+  },
+  methods: {
+    ...mapActions('popup', ['openPop', 'closePop']),
+    ...mapActions('userModel', ['setUserModel'])
+  }
+};
+</script>
+
+<style lang="scss">
+$lap-image-url: 'https://lguplus-event.s3.amazonaws.com/static/lostanimalpark/image';
+
+.popup__personal {
+  .popup__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 170px;
+    @include background(
+      $lap-image-url + '/popup/bg-header.jpg',
+      $position: center top
+    );
+    text-align: center;
+  }
+
+  .popup__inner {
+    width: 560px;
+    margin: 0 auto;
+  }
+
+  .info {
+    &__group {
+      font-size: 0;
+      label {
+        width: 180px;
+        height: 80px;
+        font-size: 0;
+      }
+      input {
+        width: calc(100% - 180px - 2px);
+        height: 80px;
+        font-size: 0;
+        margin: 0;
+        padding: 0 20px;
+        border: 1px solid #dddecd;
+        border-radius: 5px;
+        font-size: 22px;
+        line-height: 80px;
+        vertical-align: middle;
+      }
+      .zipcode__input {
+        width: calc(100% - 180px - 2px - 200px);
+      }
+      .popBtn__zipcode {
+        width: 200px;
+      }
+      .address__input {
+        margin-left: 180px;
+      }
+    }
+    &__item {
+      display: flex;
+    }
+    &__name {
+      flex-wrap: wrap;
+      label {
+        background: url($lap-image-url+'/popup/txt-name.png');
+      }
+      img {
+        flex: 1;
+      }
+    }
+    &__phone {
+      background: url($lap-image-url+'/popup/txt-phone.png');
+    }
+    &__phone {
+      background: url($lap-image-url+'/popup/txt-phone.png');
+    }
+    &__parentPhone {
+      background: url($lap-image-url+'/popup/txt-phone2.png');
+    }
+  }
+
+  .agree__group {
+    .btn__agreeDetail {
+      width: 226px;
+      height: 84px;
+      background: url($lap-image-url+'/popup/btns.png') 0 -151px no-repeat;
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.popup__personal {
+  .popup__inner {
+    width: 600px;
+    margin: 0 auto;
+  }
+  input {
+    height: 50px;
+  }
+  .phone-corp,
+  .popbtn__phone-auth,
+  .popbtn__zipcode {
+    width: 190px;
+    flex: 0 0 190px;
+    margin-left: 8px;
+    font-size: 25px;
+    vertical-align: middle;
+  }
+
+  .phone-corp {
+    display: inline-block;
+  }
+
+  .popbtn__phone-auth,
+  .popbtn__zipcode {
+    color: #fff;
+    // background: $colorBrown;
+  }
+}
+</style>

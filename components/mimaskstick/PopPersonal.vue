@@ -24,7 +24,7 @@
         :agreements="{
           type: 'img',
           list: ['개인 정보 수집, 취급 및 위탁 동의 안내'],
-          checkboxSize: [50, 50, 10]
+          checkboxSize: [20, 20, 10]
         }"
       >
         <template #nameNotice>

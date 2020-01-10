@@ -99,7 +99,11 @@
       </p> -->
       <p class="agree__item" v-for="(agree, idx) in agreements.list" :key="idx">
         <label :for="`${id}Agree${idx}`">
-          <input type="checkbox" :id="`${id}Agree${idx}`" />
+          <input
+            type="checkbox"
+            :id="`${id}Agree${idx}`"
+            v-model="agreeList[idx]"
+          />
           <i
             class="irCheckbox"
             v-if="agreements.type == 'img'"
@@ -142,6 +146,7 @@
         <button class="btn__agreeDetail">자세히 보기</button>
       </p>
     </div>
+    <button type="button" @click="nextStep">다음</button>
   </form>
 </template>
 
@@ -158,6 +163,10 @@ export default {
     infoItems: {
       type: Object,
       default: () => {}
+    },
+    nextPop: {
+      type: String,
+      default: false
     },
     name: {
       type: Boolean,
@@ -205,10 +214,11 @@ export default {
         zipcode: '',
         address: '',
         addressDetail: '',
-        agree: false,
+        agreeList: [false, false, false, false],
+        agree0: false,
+        agree1: false,
         agree2: false,
-        agree3: false,
-        agree4: false
+        agree3: false
       }
     };
   },
@@ -222,6 +232,11 @@ export default {
   computed: {},
   methods: {
     ...mapActions('popup', ['openPop']),
+    ...mapActions('userModel', ['setUserModel']),
+    nextStep() {
+      this.setUserModel(this.userModel);
+      this.$emit('nextStep');
+    },
     sendKmcAuth() {},
 
     confirmKmcAuth() {

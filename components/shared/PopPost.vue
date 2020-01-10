@@ -7,12 +7,9 @@
     :top="100"
   >
     <template #header>
-      <h1 class="line">
-        <img
-          src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-post.png"
-          alt="우편번호"
-        />
-      </h1>
+      <slot name="header">
+        <h1>우편번호 찾기 기본 타이틀</h1>
+      </slot>
     </template>
   </PopBase>
 </template>

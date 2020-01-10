@@ -34,13 +34,13 @@
             >
               <div class="popup__inner">
                 <slot name="content">
-                  <p>기본 컨텐츠</p>
                   <!-- 우편번호 팝업 -->
                   <DaumPostcode
                     v-if="type == 'post'"
                     :on-complete="postComplete"
                     :animation="true"
                   />
+                  <p v-else>기본 컨텐츠</p>
                 </slot>
               </div>
             </div>
